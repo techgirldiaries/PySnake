@@ -1,8 +1,11 @@
 # Python Snake ReadMe
 
 Name: Snake
+
 Version: 0.0.1.0
+
 Contributors: Oluwakemi Toluwalase
+
 
 Simple Snake game used for educational purposes.
 
