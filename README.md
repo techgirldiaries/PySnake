@@ -5,9 +5,7 @@ Welcome to PySnake, a classic snake game implemented in Python. This project aim
 
 ### Features
 - Simple and intuitive controls
-- Colorful and engaging user interface
 - Increasing difficulty as the snake grows longer
-- Score tracking to challenge your previous best
 
 ### How to Play
 1. Install Python on your machine if you haven't already.
