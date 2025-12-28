@@ -17,8 +17,8 @@ Welcome to PySnake, a classic snake game implemented in Python. This project aim
 ### Version: 
 1.1
 
-### Contributor(s): 
-Tech Girl Diaries (Oluwakemi Toluwalase Obadeyi)
+### Contributor: 
+Tech Girl Diaries (Oluwakemi T Obadeyi)
 
 ### Changelog
 
@@ -27,13 +27,9 @@ Fixes isues and performance improvements.
 # 1.0
 Added ability to read from file. First attempt to Snake!
 
-### Contributing
-If you'd like to contribute to PySnake, feel free to fork the repository and submit a pull request with your changes. Any improvements, bug fixes, or additional features are highly appreciated.
-
-### Feedback
-Your feedback is crucial for the improvement of PySnake. If you encounter any issues, have suggestions, or just want to say hello, please open an issue in the repository.
-
 ### License
-This project is licensed under the MIT License - see the LICENSE • LICENSE file for details.
+Licensed under the PolyForm Noncommercial License - Commercial use is prohibited
+
+Copyright (c) 2025 Oluwakemi Obadeyi
 
 Let the snake game begin! Happy gaming! 🐍
