@@ -61,6 +61,9 @@ That's it! The game runs even without audio files.
 ### Installation (v1.0 Terminal Edition)
 
 1. Navigate to the root PySnake directory
+   ```bash
+   cd v1.0
+   ```
 2. Run the game:
 
    ```bash
@@ -79,7 +82,6 @@ Feature-rich Pygame implementation with power-ups, AI opponent, multiple game mo
 
 - **Location**: `v2.0/` directory
 - **Requires**: Pygame 2.5.0+
-- **Code**: 2000+ lines of professional modular architecture
 - **Graphics**: Full GUI with smooth animations
 - **Features**: AI opponent, power-ups system, customisable themes, multiple difficulty levels
 
@@ -89,7 +91,6 @@ Simple curses-based terminal snake game, perfect for learning Python basics.
 
 - **Location**: Root directory (`snake.py`)
 - **Requires**: Python standard library only (curses)
-- **Code**: 70 lines
 - **Graphics**: ASCII characters
 
 ---
@@ -170,7 +171,7 @@ v2.0 uses a professional modular structure for scalability:
 - Lightweight with no external dependencies
 - Perfect for learning Python basics
 
----
+-------------
 
 ## 🎮 Controls
 
@@ -319,13 +320,13 @@ PySnake/
     ├── .gitignore              # Git exclusion rules
     ├── src/                    # Source code directory
     │   ├── __init__.py         # Package initialisation
-    │   ├── snake_pygame.py     # Entry point (58 lines)
-    │   ├── game.py             # Main game engine (~700 lines)
-    │   ├── config.py           # Constants and enums (~85 lines)
-    │   ├── styles.py           # Colour palettes and themes (~200 lines)
-    │   ├── snake.py            # Snake class (~180 lines)
-    │   ├── power_up.py         # Power-up system (~170 lines)
-    │   └── ai_player.py        # AI pathfinding (~250 lines)
+    │   ├── snake_pygame.py     # Entry point
+    │   ├── game.py             # Main game engine
+    │   ├── config.py           # Constants and enums
+    │   ├── styles.py           # Colour palettes and themes
+    │   ├── snake.py            # Snake class
+    │   ├── power_up.py         # Power-up system
+    │   └── ai_player.py        # AI pathfinding
     ├── docs/                   # Documentation directory
     │   ├── ARCHITECTURE.md     # Detailed technical documentation
     │   └── QUICKSTART.md       # Quick start guide
@@ -542,4 +543,4 @@ See [LICENSE.md](../LICENSE.md) in the root directory for full licence details.
 
 **Enjoy playing PySnake v2.0!** 🐍🎮
 
-Questions, feedback, or issues? Feel free to open an issue on [GitHub](https://github.com/techgirldiaries/PySnake).
+Questions, feedback or issues? Feel free to open an issue on [GitHub](https://github.com/techgirldiaries/PySnake).
