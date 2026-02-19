@@ -86,10 +86,16 @@ A modern, feature-rich Snake game built with Pygame featuring smooth graphics, p
 pip install -r requirements.txt
 ```
 
-1. **Run the game**:
+2. **Run the game**:
 
 ```bash
 python snake_pygame.py
+```
+
+3. **Upgrade python and pip**
+
+```sh
+python.exe -m pip install --upgrade pip
 ```
 
 That's it! The game will run even without audio files.
