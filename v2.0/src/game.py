@@ -10,7 +10,7 @@ import os
 from typing import Optional
 
 from config import *
-from styles import *
+import styles
 from snake import Snake
 from power_up import PowerUpManager
 from ai_player import AIPlayer
@@ -111,7 +111,7 @@ class Game:
             start_x=GRID_WIDTH // 3,
             start_y=GRID_HEIGHT // 2,
             player_type=PlayerType.HUMAN,
-            colour_primary=PLAYER_PRIMARY
+            colour_primary=styles.PLAYER_PRIMARY
         )
         
         # Create AI snake if in AI mode
@@ -120,7 +120,7 @@ class Game:
                 start_x=2 * GRID_WIDTH // 3,
                 start_y=GRID_HEIGHT // 2,
                 player_type=PlayerType.AI,
-                colour_primary=AI_PRIMARY
+                colour_primary=styles.AI_PRIMARY
             )
             
             # Create AI controller
@@ -216,7 +216,7 @@ class Game:
         elif key == pygame.K_3:
             self.difficulty = Difficulty.HARD
         elif key == pygame.K_t:
-            theme_manager.cycle_theme()
+            styles.theme_manager.cycle_theme()
         return True
     
     def handle_mode_select_input(self, key: int) -> bool:
@@ -460,7 +460,7 @@ class Game:
     def draw(self):
         """Main draw method"""
         # Background
-        self.screen.fill(DEEP_SPACE)
+        self.screen.fill(styles.DEEP_SPACE)
         
         if self.state == GameState.MENU:
             self.draw_menu()
@@ -486,28 +486,28 @@ class Game:
         pulse_factor = abs(self.menu_pulse - 30) / 30.0
         
         # Title with shadow
-        title = self.font_xlarge.render("PYSNAKE", True, ELECTRIC_CYAN)
-        title_shadow = self.font_xlarge.render("PYSNAKE", True, NEON_PINK)
+        title = self.font_xlarge.render("PYSNAKE", True, styles.ELECTRIC_CYAN)
+        title_shadow = self.font_xlarge.render("PYSNAKE", True, styles.NEON_PINK)
         title_rect = title.get_rect(center=(WINDOW_WIDTH // 2 + 3, 103))
         title_rect_main = title.get_rect(center=(WINDOW_WIDTH // 2, 100))
         self.screen.blit(title_shadow, title_rect)
         self.screen.blit(title, title_rect_main)
         
         # Version
-        version = self.font_small.render("v2.0 Modern Edition", True, TEXT_SECONDARY)
+        version = self.font_small.render("v2.0 Modern Edition", True, styles.TEXT_SECONDARY)
         version_rect = version.get_rect(center=(WINDOW_WIDTH // 2, 170))
         self.screen.blit(version, version_rect)
         
         # Instructions
         instructions = [
-            ("PRESS SPACE TO START", TEXT_HIGHLIGHT, True),
-            ("", TEXT_PRIMARY, False),
-            ("Difficulty:", TEXT_PRIMARY, False),
-            ("1 - Easy  |  2 - Medium  |  3 - Hard", TEXT_SECONDARY, False),
-            ("", TEXT_PRIMARY, False),
-            (f"Current: {self.difficulty.value['name']}", LIME_GREEN, False),
-            ("", TEXT_PRIMARY, False),
-            ("S - Settings  |  Q - Quit", TEXT_SECONDARY, False)
+            ("PRESS SPACE TO START", styles.TEXT_HIGHLIGHT, True),
+            ("", styles.TEXT_PRIMARY, False),
+            ("Difficulty:", styles.TEXT_PRIMARY, False),
+            ("1 - Easy  |  2 - Medium  |  3 - Hard", styles.TEXT_SECONDARY, False),
+            ("", styles.TEXT_PRIMARY, False),
+            (f"Current: {self.difficulty.value['name']}", styles.LIME_GREEN, False),
+            ("", styles.TEXT_PRIMARY, False),
+            ("S - Settings  |  Q - Quit", styles.TEXT_SECONDARY, False)
         ]
         
         y = 260
@@ -524,23 +524,23 @@ class Game:
             y += 40 if text else 20
         
         # Current Theme
-        theme_text = self.font_tiny.render(f"Theme: {theme_manager.get_theme_name()}", True, TEXT_SECONDARY)
+        theme_text = self.font_tiny.render(f"Theme: {styles.theme_manager.get_theme_name()}", True, styles.TEXT_SECONDARY)
         theme_rect = theme_text.get_rect(center=(WINDOW_WIDTH // 2, 500))
         self.screen.blit(theme_text, theme_rect)
         
-        theme_hint = self.font_tiny.render("(Press T to change)", True, TEXT_SECONDARY)
+        theme_hint = self.font_tiny.render("(Press T to change)", True, styles.TEXT_SECONDARY)
         theme_hint_rect = theme_hint.get_rect(center=(WINDOW_WIDTH // 2, 520))
         self.screen.blit(theme_hint, theme_hint_rect)
         
         # High Score
         hs = self.high_scores.get('single_player', 0)
-        hs_text = self.font_medium.render(f"High Score: {hs}", True, POWERUP_SPEED)
+        hs_text = self.font_medium.render(f"High Score: {hs}", True, styles.POWERUP_SPEED)
         hs_rect = hs_text.get_rect(center=(WINDOW_WIDTH // 2, 560))
         self.screen.blit(hs_text, hs_rect)
     
     def draw_mode_select(self):
         """Draw game mode selection"""
-        title = self.font_large.render("SELECT MODE", True, ELECTRIC_CYAN)
+        title = self.font_large.render("SELECT MODE", True, styles.ELECTRIC_CYAN)
         title_rect = title.get_rect(center=(WINDOW_WIDTH // 2, 100))
         self.screen.blit(title, title_rect)
         
@@ -557,16 +557,16 @@ class Game:
         y = 220
         for i, text in enumerate(options):
             if text.startswith(('1', '2')):
-                color = LIME_GREEN
+                color = styles.LIME_GREEN
                 font = self.font_medium
             elif text.startswith('ESC'):
-                color = TEXT_SECONDARY
+                color = styles.TEXT_SECONDARY
                 font = self.font_tiny
             elif not text:
                 y += 30
                 continue
             else:
-                color = TEXT_SECONDARY
+                color = styles.TEXT_SECONDARY
                 font = self.font_tiny
             
             surf = font.render(text, True, color)
@@ -576,19 +576,19 @@ class Game:
     
     def draw_settings(self):
         """Draw settings menu"""
-        title = self.font_large.render("SETTINGS", True, POWERUP_SPEED)
+        title = self.font_large.render("SETTINGS", True, styles.POWERUP_SPEED)
         title_rect = title.get_rect(center=(WINDOW_WIDTH // 2, 80))
         self.screen.blit(title, title_rect)
         
         settings = [
             (f"S - Sound Effects: {'ON' if self.sound_enabled else 'OFF'}", 
-             SUCCESS_GREEN if self.sound_enabled else ERROR_RED),
+             styles.SUCCESS_GREEN if self.sound_enabled else styles.ERROR_RED),
             (f"M - Music: {'ON' if self.music_enabled else 'OFF'}", 
-             SUCCESS_GREEN if self.music_enabled else ERROR_RED),
+             styles.SUCCESS_GREEN if self.music_enabled else styles.ERROR_RED),
             (f"P - Power-ups: {'ON' if self.power_ups_enabled else 'OFF'}", 
-             SUCCESS_GREEN if self.power_ups_enabled else ERROR_RED),
-            ("", TEXT_PRIMARY),
-            ("ESC - Back to Menu", TEXT_SECONDARY)
+             styles.SUCCESS_GREEN if self.power_ups_enabled else styles.ERROR_RED),
+            ("", styles.TEXT_PRIMARY),
+            ("ESC - Back to Menu", styles.TEXT_SECONDARY)
         ]
         
         y = 200
@@ -612,9 +612,9 @@ class Game:
         
         # Snakes
         if self.player_snake:
-            self.draw_snake(self.player_snake, PLAYER_PRIMARY)
+            self.draw_snake(self.player_snake, styles.PLAYER_PRIMARY)
         if self.ai_snake:
-            self.draw_snake(self.ai_snake, AI_PRIMARY)
+            self.draw_snake(self.ai_snake, styles.AI_PRIMARY)
         
         # HUD
         self.draw_hud()
@@ -622,9 +622,9 @@ class Game:
     def draw_grid(self):
         """Draw grid lines"""
         for x in range(0, WINDOW_WIDTH, GRID_SIZE):
-            pygame.draw.line(self.screen, GRID_LINE, (x, 0), (x, WINDOW_HEIGHT), 1)
+            pygame.draw.line(self.screen, styles.GRID_LINE, (x, 0), (x, WINDOW_HEIGHT), 1)
         for y in range(0, WINDOW_HEIGHT, GRID_SIZE):
-            pygame.draw.line(self.screen, GRID_LINE, (0, y), (WINDOW_WIDTH, y), 1)
+            pygame.draw.line(self.screen, styles.GRID_LINE, (0, y), (WINDOW_WIDTH, y), 1)
     
     def draw_food(self):
         """Draw food"""
@@ -632,8 +632,8 @@ class Game:
             x = self.food_position[0] * GRID_SIZE
             y = self.food_position[1] * GRID_SIZE
             center = (x + GRID_SIZE // 2, y + GRID_SIZE // 2)
-            pygame.draw.circle(self.screen, FOOD_RED, center, GRID_SIZE // 2 - 2)
-            pygame.draw.circle(self.screen, FOOD_GLOW, center, GRID_SIZE // 3)
+            pygame.draw.circle(self.screen, styles.FOOD_RED, center, GRID_SIZE // 2 - 2)
+            pygame.draw.circle(self.screen, styles.FOOD_GLOW, center, GRID_SIZE // 3)
     
     def draw_power_ups(self):
         """Draw power-ups"""
@@ -662,14 +662,14 @@ class Game:
             y = segment[1] * GRID_SIZE
             
             # Get segment colour with fade
-            colour = get_snake_segment_color(base_colour, i, len(snake.body), snake.invincible)
+            colour = styles.get_snake_segment_color(base_colour, i, len(snake.body), snake.invincible)
             
             # Draw segment
             pygame.draw.rect(self.screen, colour, (x + 1, y + 1, GRID_SIZE - 2, GRID_SIZE - 2), border_radius=3)
             
             # Draw eyes on head
             if i == 0:
-                eye_colour = BLACK if not snake.invincible else ELECTRIC_CYAN
+                eye_colour = styles.BLACK if not snake.invincible else styles.ELECTRIC_CYAN
                 self.draw_snake_eyes(snake, x, y, eye_colour)
     
     def draw_snake_eyes(self, snake: Snake, x: int, y: int, colour: tuple):
@@ -695,7 +695,7 @@ class Game:
         """Draw heads-up display"""
         # Player score
         if self.player_snake:
-            player_text = self.font_small.render(f"Player: {self.player_snake.score}", True, PLAYER_PRIMARY)
+            player_text = self.font_small.render(f"Player: {self.player_snake.score}", True, styles.PLAYER_PRIMARY)
             self.screen.blit(player_text, (10, 10))
             
             # Player power-ups
@@ -703,13 +703,13 @@ class Game:
             y = 45
             for effect_type, time_left in effects:
                 text = self.font_micro.render(f"{effect_type.value['name']}: {time_left}s", 
-                                             True, POWERUP_INVINCIBLE)
+                                             True, styles.POWERUP_INVINCIBLE)
                 self.screen.blit(text, (10, y))
                 y += 20
         
         # AI score
         if self.ai_snake:
-            ai_text = self.font_small.render(f"AI: {self.ai_snake.score}", True, AI_PRIMARY)
+            ai_text = self.font_small.render(f"AI: {self.ai_snake.score}", True, styles.AI_PRIMARY)
             ai_rect = ai_text.get_rect(topright=(WINDOW_WIDTH - 10, 10))
             self.screen.blit(ai_text, ai_rect)
             
@@ -718,24 +718,24 @@ class Game:
             y = 45
             for effect_type, time_left in effects:
                 text = self.font_micro.render(f"{effect_type.value['name']}: {time_left}s", 
-                                             True, POWERUP_MULTIPLIER)
+                                             True, styles.POWERUP_MULTIPLIER)
                 text_rect = text.get_rect(topright=(WINDOW_WIDTH - 10, y))
                 self.screen.blit(text, text_rect)
                 y += 20
         
         # Difficulty
-        diff_text = self.font_tiny.render(f"{self.difficulty.value['name']}", True, TEXT_SECONDARY)
+        diff_text = self.font_tiny.render(f"{self.difficulty.value['name']}", True, styles.TEXT_SECONDARY)
         diff_rect = diff_text.get_rect(center=(WINDOW_WIDTH // 2, 15))
         self.screen.blit(diff_text, diff_rect)
     
     def draw_pause_overlay(self):
         """Draw pause overlay"""
         overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
-        overlay.set_alpha(ALPHA_MEDIUM)
-        overlay.fill(OVERLAY_DARK)
+        overlay.set_alpha(styles.ALPHA_HEAVY)
+        overlay.fill(styles.OVERLAY_DARK)
         self.screen.blit(overlay, (0, 0))
         
-        title = self.font_large.render("PAUSED", True, POWERUP_SPEED)
+        title = self.font_large.render("PAUSED", True, styles.POWERUP_SPEED)
         title_rect = title.get_rect(center=(WINDOW_WIDTH // 2, 200))
         self.screen.blit(title, title_rect)
         
@@ -746,7 +746,7 @@ class Game:
         
         y = 300
         for text in instructions:
-            surf = self.font_medium.render(text, True, TEXT_PRIMARY)
+            surf = self.font_medium.render(text, True, styles.TEXT_PRIMARY)
             rect = surf.get_rect(center=(WINDOW_WIDTH // 2, y))
             self.screen.blit(surf, rect)
             y += 60
@@ -754,24 +754,24 @@ class Game:
     def draw_game_over(self):
         """Draw game over screen"""
         overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
-        overlay.set_alpha(ALPHA_HEAVY)
-        overlay.fill(OVERLAY_DARK)
+        overlay.set_alpha(styles.ALPHA_HEAVY)
+        overlay.fill(styles.OVERLAY_DARK)
         self.screen.blit(overlay, (0, 0))
         
         # Determine winner
         if self.mode == GameMode.AI_OPPONENT and self.ai_snake and self.player_snake:
             if self.player_snake.alive and not self.ai_snake.alive:
                 title_text = "YOU WIN!"
-                title_colour = SUCCESS_GREEN
+                title_colour = styles.SUCCESS_GREEN
             elif self.ai_snake.alive and not self.player_snake.alive:
                 title_text = "AI WINS!"
-                title_colour = ERROR_RED
+                title_colour = styles.ERROR_RED
             else:
                 title_text = "DRAW!"
-                title_colour = WARNING_AMBER
+                title_colour = styles.WARNING_AMBER
         else:
             title_text = "GAME OVER"
-            title_colour = ERROR_RED
+            title_colour = styles.ERROR_RED
         
         title = self.font_large.render(title_text, True, title_colour)
         title_rect = title.get_rect(center=(WINDOW_WIDTH // 2, 150))
@@ -781,14 +781,14 @@ class Game:
         y = 250
         if self.player_snake:
             score_text = self.font_medium.render(f"Your Score: {self.player_snake.score}", 
-                                                 True, PLAYER_PRIMARY)
+                                                 True, styles.PLAYER_PRIMARY)
             score_rect = score_text.get_rect(center=(WINDOW_WIDTH // 2, y))
             self.screen.blit(score_text, score_rect)
             y += 50
         
         if self.ai_snake:
             ai_score_text = self.font_medium.render(f"AI Score: {self.ai_snake.score}", 
-                                                    True, AI_PRIMARY)
+                                                    True, styles.AI_PRIMARY)
             ai_score_rect = ai_score_text.get_rect(center=(WINDOW_WIDTH // 2, y))
             self.screen.blit(ai_score_text, ai_score_rect)
             y += 50
@@ -796,7 +796,7 @@ class Game:
         # High score
         key = 'single_player' if self.mode == GameMode.SINGLE_PLAYER else 'ai_opponent_player'
         hs = self.high_scores.get(key, 0)
-        hs_text = self.font_small.render(f"High Score: {hs}", True, POWERUP_SPEED)
+        hs_text = self.font_small.render(f"High Score: {hs}", True, styles.POWERUP_SPEED)
         hs_rect = hs_text.get_rect(center=(WINDOW_WIDTH // 2, y + 20))
         self.screen.blit(hs_text, hs_rect)
         
@@ -808,7 +808,7 @@ class Game:
         
         y = 450
         for text in instructions:
-            surf = self.font_small.render(text, True, TEXT_SECONDARY)
+            surf = self.font_small.render(text, True, styles.TEXT_SECONDARY)
             rect = surf.get_rect(center=(WINDOW_WIDTH // 2, y))
             self.screen.blit(surf, rect)
             y += 40

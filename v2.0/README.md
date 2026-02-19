@@ -1,545 +1,231 @@
-# PySnake (Python Snake) Game 🐍
+﻿# PySnake v2.0 - Modern Edition
 
-A classic snake game implemented in Python, available in both terminal-based and modern GUI versions. Perfect for Python enthusiasts and gamers alike.
+A Python classic snake game with AI opponent, power-ups, multiple themes and smooth Pygame graphics.
 
-**Current Version**: 2.0 (Modern Edition)  
-**Original Version**: 1.1 (Terminal Edition)  
-**Contributor**: Tech Girl Diaries (Oluwakemi T Obadeyi)
+**Version**: v2.0 Modern Edition  
+**Author**: Tech Girl Diaries
 
----
+## Quick Start
 
-## 📋 Table of Contents
-
-1. [Quick Start](#-quick-start)
-2. [Available Versions](#-available-versions)
-3. [Features](#-features)
-4. [Controls](#-controls)
-5. [Gameplay Guide](#-gameplay-guide)
-6. [Technical Documentation](#-technical-documentation)
-7. [Troubleshooting](#-troubleshooting)
-8. [Development](#-development)
-9. [Licence](#-licence)
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.7 or higher
-- pip (Python package manager)
-
-### Installation (v2.0 Modern Edition)
+### Installation
 
 1. **Install dependencies**:
 
-   ```bash
+```bash
    pip install -r requirements.txt
-   ```
+```
 
 2. **Run the game**:
 
-   ```bash
-   python play.py
-   ```
+```bash
+  python play.py
+```
 
-   Or, if you prefer to run from the src directory:
+That's it! The game runs perfectly without audio files.
 
-   ```bash
-   cd src
-   python snake_pygame.py
-   ```
+## Features
 
-3. **Upgrade Python and pip** (if needed):
+- **Two Game Modes**: Single Player or AI Opponent
+- **Power-ups System**: Speed Boost, Invincibility, Score Multiplier
+- **Four Dynamic Themes**: Cyberpunk, Retro, Ocean, Forest (Press **T** in menu)
+- **Three Difficulty Levels**: Easy, Medium, Hard
+- **AI Opponent**: Intelligent pathfinding using BFS algorithm
+- **Persistent High Scores**: Auto-saved to `db/highscores.json`
+- **Smooth 60 FPS Graphics**: Professional animations and visual effects
+- **Full Settings Menu**: Customise sound, music and power-ups
 
-   ```bash
-   python.exe -m pip install --upgrade pip
-   ```
+## Controls
 
-That's it! The game runs even without audio files.
+### Main Menu
 
-### Installation (v1.0 Terminal Edition)
-
-1. Navigate to the root PySnake directory
-2. Run the game:
-
-   ```bash
-   python snake.py
-   ```
-
-No external dependencies required!
-
----
-
-## 📦 Available Versions
-
-### v2.0 - Modern Edition (GUI)
-
-Feature-rich Pygame implementation with power-ups, AI opponent, multiple game modes, and persistent high scores.
-
-- **Location**: `v2.0/` directory
-- **Requires**: Pygame 2.5.0+
-- **Code**: 2000+ lines of professional modular architecture
-- **Graphics**: Full GUI with smooth animations
-- **Features**: AI opponent, power-ups system, customisable themes, multiple difficulty levels
-
-### v1.0 - Terminal Edition (Classic)
-
-Simple curses-based terminal snake game, perfect for learning Python basics.
-
-- **Location**: Root directory (`snake.py`)
-- **Requires**: Python standard library only (curses)
-- **Code**: 70 lines
-- **Graphics**: ASCII characters
-
----
-
-## ✨ Features
-
-### v2.0 Modern Edition
-
-#### Core Gameplay
-
-- **Smooth Graphics**: 800×600 window with grid-based movement running at 60 FPS
-- **Intuitive Controls**: Arrow keys or WASD for movement, ESC for pause
-- **Game Modes**:
-  - **Single Player**: Classic snake gameplay with power-ups
-  - **AI Opponent**: Compete against an intelligent computer snake with BFS pathfinding
-- **Multiple Difficulty Levels**: Easy, Medium, and Hard with speed and score multipliers
-- **Dynamic Themes**: Four beautiful colour schemes (Cyberpunk, Retro, Ocean, Forest) switchable in-game
-- **Score System**: Points with difficulty-based multipliers and power-up bonuses
-
-#### Advanced Features
-
-- 🎮 **Power-ups System**:
-  - **Speed Boost** (Yellow) - Temporarily increases snake speed for 5 seconds
-  - **Invincibility** (Cyan) - Pass through your own body for 7 seconds
-  - **Score Multiplier** (Purple) - 2× points for 10 seconds
-
-- 🤖 **AI Opponent**:
-  - Intelligent pathfinding using BFS (Breadth-First Search) algorithm
-  - Competes for food and power-ups
-  - Displays separate score for human vs AI
-  - Colour-coded snakes (Teal for Player, Magenta for AI)
-
-- 🎯 **Game States**:
-  - Main menu with difficulty and theme selection
-  - Mode selection (Single Player or AI Opponent)
-  - Settings menu for customisation
-  - Pause functionality (ESC or P)
-  - Game over screen with detailed statistics
-
-- 💾 **Persistent Data**:
-  - High score tracking saved to `db/highscores.json`
-  - Separate high scores for Single Player and AI Opponent modes
-  - Auto-saves when you beat your record
-  - Database folder automatically created on first run
-
-- 🎨 **Visual Polish**:
-  - Animated snake with eyes that follow movement direction
-  - Colour-coded power-ups with visual effects
-  - Smooth gradient fading on snake body
-  - Grid overlay for better visibility
-  - Real-time HUD with score, high score, and active effects
-  - Theme-specific colour palettes for immersive experience
-
-#### Module Architecture (Clean & Maintainable)
-
-v2.0 uses a professional modular structure for scalability:
-
-- **config.py**: Game constants, enumerations, and configuration values
-- **styles.py**: Colour palettes, theme management, and visual styling
-- **snake.py**: Snake class with movement, collision detection, and rendering
-- **power_up.py**: Power-up spawning, collection, and effect management
-- **ai_player.py**: AI pathfinding logic and decision-making algorithms
-- **game.py**: Main game engine with state management and rendering
-- **snake_pygame.py**: Entry point for the application
-
-#### Customisation Settings
-
-- Sound effects toggle (when audio files available)
-- Music toggle (when audio files available)
-- Power-ups enable/disable
-- **Theme switching** (Press T in main menu to cycle through themes)
-
-### v1.0 Terminal Edition
-
-- Simple and intuitive arrow key controls
-- Terminal-based ASCII graphics
-- Increasing difficulty as the snake grows longer
-- Lightweight with no external dependencies
-- Perfect for learning Python basics
-
----
-
-## 🎮 Controls
-
-### v2.0 Modern Edition
-
-#### Main Menu
-
-- **SPACE/ENTER**: Start game (proceed to mode selection)
+- **SPACE**: Start game
 - **1/2/3**: Select difficulty (Easy/Medium/Hard)
-- **T**: Cycle themes (Cyberpunk → Retro → Ocean → Forest)
+- **T**: Cycle themes (Cyberpunk Retro Ocean Forest)
 - **S**: Settings
-- **Q**: Quit game
+- **Q**: Quit
 
-#### Mode Selection
+### In-Game
 
-- **1**: Single Player mode
-- **2**: AI Opponent mode
-- **ESC**: Back to main menu
+- **Arrow Keys** or **WASD**: Move snake
+- **ESC** or **P**: Pause
+- **Q** (in pause): Quit to menu
 
-#### In-Game
+## Gameplay Overview
 
-- **Arrow Keys** or **WASD**: Move snake (UP/W, DOWN/S, LEFT/A, RIGHT/D)
-- **ESC** or **P**: Pause game
-- **Q** (in pause menu): Quit to menu
+### Game Modes
 
-#### Pause Menu
-
-- **ESC** or **P**: Resume game
-- **Q**: Quit to main menu
-
-#### Game Over
-
-- **SPACE/ENTER**: Play again with same settings
-- **Q/ESC**: Return to main menu
-
-### v1.0 Terminal Edition
-
-- **Arrow Keys**: Move snake (↑ ↓ ← →)
-- **Q** or **Ctrl+C**: Quit game
-
----
-
-## 📖 Gameplay Guide
+- **Single Player**: Classic snake gameplay with power-ups
+- **AI Opponent**: Compete against an intelligent computer snake
 
 ### Difficulty Levels
 
-| Level  | Speed  | Score Multiplier | Description             |
-| ------ | ------ | ---------------- | ----------------------- |
-| Easy   | Slow   | 1×               | Ideal for beginners     |
-| Medium | Normal | 1.5×             | Balanced challenge      |
-| Hard   | Fast   | 2×               | For experienced players |
-
-**Note**: Speed increases progressively as your snake grows longer!
-
-### Themes
-
-| Theme     | Style           | Colour Palette                                 |
-| --------- | --------------- | ---------------------------------------------- |
-| Cyberpunk | Neon/Futuristic | Teal player, magenta AI, deep space background |
-| Retro     | Classic Arcade  | Green player, magenta AI, black background     |
-| Ocean     | Aquatic         | Cyan player, orange AI, deep blue background   |
-| Forest    | Natural         | Lime player, brown AI, dark green background   |
-
-**Tip**: Press **T** in the main menu to switch themes instantly!
+| Level  | Speed  | Score Multiplier |
+| ------ | ------ | ---------------- |
+| Easy   | Slow   | 1                |
+| Medium | Normal | 1.5              |
+| Hard   | Fast   | 2                |
 
 ### Power-ups
 
-| Power-up         | Colour | Duration   | Effect                                   |
-| ---------------- | ------ | ---------- | ---------------------------------------- |
-| Speed Boost      | Yellow | 5 seconds  | Increases movement speed significantly   |
-| Invincibility    | Cyan   | 7 seconds  | Pass through your own body without dying |
-| Score Multiplier | Purple | 10 seconds | Doubles all points earned                |
+| Power-up         | Colour | Duration   | Effect                     |
+| ---------------- | ------ | ---------- | -------------------------- |
+| Speed Boost      | Yellow | 5 seconds  | Increases movement speed   |
+| Invincibility    | Cyan   | 7 seconds  | Pass through your own body |
+| Score Multiplier | Purple | 10 seconds | Doubles all points earned  |
 
-**Strategy**: Power-ups spawn randomly. Collect them to gain temporary advantages!
+### Themes
 
-### Scoring System
+Press **T** in the main menu to cycle through:
 
-- **Base points per food**: 10
-- **Multiplied by difficulty level** (1×, 1.5×, or 2×)
-- **Multiplied again if Score Multiplier power-up is active**
-- **Example**: On Hard difficulty with 2× power-up = 10 × 2 × 2 = **40 points per food**!
+- **Cyberpunk**: Neon colours with teal player and magenta AI
+- **Retro**: Classic arcade with green player and magenta AI
+- **Ocean**: Aquatic with cyan player and orange AI
+- **Forest**: Natural with lime player and brown AI
 
-### Strategy Tips
-
-1. **Plan Ahead**: Think about where your tail will be, not just your head's direction
-2. **Use Power-ups Wisely**: Invincibility helps navigate tight spaces when your snake is large
-3. **Speed Management**: Speed Boost allows faster scoring but increases danger
-4. **Corner Strategy**: Stay near edges in early game, move towards centre as you grow
-5. **Spiral Pattern**: When your snake is large, create spirals from outside to inside
-6. **AI Competition**: In AI mode, race the computer to food and power-ups for higher scores
-
-### AI Opponent Mode
-
-- AI uses **Breadth-First Search (BFS)** pathfinding to navigate efficiently
-- AI targets food, power-ups, and avoids collisions
-- Separate score tracking for Human vs AI
-- First to reach target score or last snake standing wins!
-
----
-
-## 🔧 Technical Documentation
-
-### System Requirements
-
-- **Operating System**: Windows, macOS, or Linux
-- **Python Version**: 3.7 or higher
-- **Dependencies**: Pygame 2.5.0+ (v2.0 only)
-- **Display**: 800×600 minimum resolution
-- **Storage**: ~5 MB (including code and optional audio files)
-
-### Architecture
-
-#### Design Patterns (v2.0)
-
-- **Object-Oriented Design**: Clean separation of concerns with Snake, Game, PowerUpManager, and AIPlayer classes
-- **State Machine**: Proper game state management using GameState enum (MENU, MODE_SELECT, PLAYING, PAUSED, GAME_OVER, SETTINGS)
-- **Strategy Pattern**: AI behaviour encapsulated in AIPlayer class
-- **Factory Pattern**: Power-up creation and management in PowerUpManager
-- **Singleton Pattern**: ThemeManager for global theme state
-- **Enum Classes**: Type-safe enumerations for Direction, Difficulty, PowerUpType, PlayerType, GameMode, and Theme
-
-#### Data Structures
-
-- **Dataclasses**: Modern Python data structures for PowerUp objects
-- **Deque**: Efficient snake body management using collections.deque
-- **Dictionary**: Fast lookup for high scores and theme colour palettes
-
-### Performance
-
-- **Frame Rate**: 60 FPS for smooth animations and responsive controls
-- **Movement Speed**: Calculated independently from rendering loop for consistent gameplay
-- **Collision Detection**: Efficient algorithms checking only relevant game objects
-- **Memory Management**: Optimised to handle large snakes without performance degradation
-
-### File Structure
+## Project Structure
 
 ```text
-PySnake/
-├── snake.py                    # v1.0 Terminal Edition
-├── LICENSE.md                  # Licence information
-├── README.md                   # Project overview
-└── v2.0/                       # Modern Edition
-    ├── play.py                 # Main launcher script
-    ├── requirements.txt        # Python dependencies
-    ├── README.md               # This file
-    ├── .gitignore              # Git exclusion rules
-    ├── src/                    # Source code directory
-    │   ├── __init__.py         # Package initialisation
-    │   ├── snake_pygame.py     # Entry point (58 lines)
-    │   ├── game.py             # Main game engine (~700 lines)
-    │   ├── config.py           # Constants and enums (~85 lines)
-    │   ├── styles.py           # Colour palettes and themes (~200 lines)
-    │   ├── snake.py            # Snake class (~180 lines)
-    │   ├── power_up.py         # Power-up system (~170 lines)
-    │   └── ai_player.py        # AI pathfinding (~250 lines)
-    ├── docs/                   # Documentation directory
-    │   ├── ARCHITECTURE.md     # Detailed technical documentation
-    │   └── QUICKSTART.md       # Quick start guide
-    ├── db/                     # Database directory
-    │   └── highscores.json     # Auto-generated high score storage
-    └── assets/                 # Optional assets folder
-        ├── README.md           # Assets information
-        └── sounds/             # Optional sound effects
-            ├── eat.wav
-            ├── game_over.wav
-            └── power_up.wav
+v2.0/
+├── play.py                 # Main launcher
+├── requirements.txt        # Dependencies
+├── README.md               # This file (quick reference)
+├── README_DETAILED.md      # Full documentation (archived)
+├── GAMEPLAY.md             # Complete gameplay strategies
+├── .gitignore              # Git exclusion rules
+├── src/                    # Source code directory
+│   ├── snake_pygame.py     # Entry point
+│   ├── game.py             # Game engine (~800 lines)
+│   ├── config.py           # Constants & enums
+│   ├── styles.py           # Themes & colour palettes
+│   ├── snake.py            # Snake class
+│   ├── power_up.py         # Power-up system
+│   └── ai_player.py        # AI pathfinding (BFS)
+├── docs/                   # Documentation directory
+│   ├── ARCHITECTURE.md     # Technical architecture
+│   └── QUICKSTART.md       # Detailed setup guide
+├── db/                     # Database directory
+│   └── highscores.json     # Auto-generated high scores
+└── assets/                 # Optional assets folder
+    └── sounds/             # Optional sound effects (.wav)
+        ├── eat.wav
+        ├── game_over.wav
+        └── power_up.wav
 ```
 
-### Audio System (Optional)
+## Troubleshooting
 
-To enable sound effects, add `.wav` files to the `assets/sounds/` directory:
+### Game won't start
 
-- **eat.wav** - Played when snake consumes food
-- **game_over.wav** - Played on game over
-- **power_up.wav** - Played when collecting power-ups
+```bash
+pip install pygame
+python --version  # Should be 3.7+
+```
 
-**Note**: The game works perfectly without audio files! Sound is completely optional.
+### No sound
 
-#### Free Sound Resources
+Sound files are **optional**. Add `.wav` files to `assets/sounds/` if you want audio:
 
-- [Freesound.org](https://freesound.org/) - Creative Commons audio library
-- [OpenGameArt.org](https://opengameart.org/) - Free game assets
-- [ZapSplat](https://www.zapsplat.com/) - Sound effects library
+- `eat.wav`, `game_over.wav`, `power_up.wav`
 
----
+### High score not saving
 
-## 🐛 Troubleshooting
+- Check write permissions in game directory
+- Ensure `db/` folder exists (auto-created on first run)
 
-### Game Won't Start
+### Theme not changing
 
-**Problem**: Error when running `python play.py`
+- Press **T** only in the **main menu** (not in-game or settings)
 
-**Solutions**:
+For detailed troubleshooting, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
-- Ensure Pygame is installed: `pip install pygame`
-- Check Python version: `python --version` (should be 3.7 or higher)
-- Verify you're in the `v2.0/` directory
-- Try reinstalling dependencies: `pip install -r requirements.txt --force-reinstall`
+## Documentation
 
-### No Sound
-
-**Problem**: Game runs but no audio plays
-
-**Solution**: This is normal! Sound files are **optional**. Add `.wav` files to `assets/sounds/` directory if you want audio. The game is fully functional without sound.
-
-### Game Too Fast/Slow
-
-**Problem**: Movement speed doesn't feel right
-
-**Solutions**:
-
-- Adjust difficulty in the main menu (press **1** for Easy, **2** for Medium, **3** for Hard)
-- Remember: Speed increases naturally as your snake grows longer
-- Try different themes - some may feel faster due to colour contrast
-
-### High Score Not Saving
-
-**Problem**: High score resets when restarting the game
-
-**Solutions**:
-
-- Check write permissions in the game directory
-- The game automatically creates `db/highscores.json` in the database folder
-- Ensure the file and folder aren't read-only
-- On Windows, try running as Administrator if permission issues persist
-
-### Theme Not Changing
-
-**Problem**: Pressing **T** doesn't switch themes
-
-**Solution**: Ensure you're in the **main menu**, not in-game or in settings. Theme switching only works from the main menu screen.
-
-### AI Opponent Freezes
-
-**Problem**: AI snake stops moving or behaves erratically
-
-**Solution**: This is rare but can occur if the AI gets trapped. Restart the game. The BFS algorithm should prevent this in most cases.
-
-### Import Errors
-
-**Problem**: `ModuleNotFoundError: No module named 'pygame'`
-
-**Solutions**:
-
-- Install Pygame: `pip install pygame`
-- If using virtual environment, ensure it's activated
-- Check pip is installing to the correct Python version: `python -m pip install pygame`
-
-### Terminal Edition Not Working
-
-**Problem**: v1.0 `snake.py` crashes or displays incorrectly
-
-**Solutions**:
-
-- Ensure you're using a terminal that supports curses (bash, PowerShell, Command Prompt)
-- On Windows, try Windows Terminal for better compatibility
-- Check Python installation includes curses library (standard on most systems)
+- **README.md** (this file) - Quick reference and overview
+- **[docs/QUICKSTART.md](docs/QUICKSTART.md)** - Detailed getting started guide
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Technical architecture details
+- **[docs/GAMEPLAY.md](GAMEPLAY.md)** - Complete gameplay guide with strategies
+- **[docs/TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Comprehensive troubleshooting
+- **[docs/README_DETAILED.md](README_DETAILED.md)** - Full detailed documentation (archived)
 
 ---
 
-## 🔮 Future Enhancements
+## System Requirements
 
-Planned features for upcoming versions:
+- Python 3.7 or higher
+- Pygame 2.5.0+
+- 5 MB storage
+- Optional: Sound files (WAV format)
+
+## Future Features
 
 - [ ] Background music support
-- [ ] Local multiplayer mode (split screen)
+- [ ] Local multiplayer (split screen)
 - [ ] Obstacles and maze levels
-- [ ] Additional custom themes/skins
-- [ ] Leaderboard with player names
-- [ ] Online multiplayer functionality
-- [ ] Mobile touch controls
-- [ ] Achievement system with badges
-- [ ] Daily challenges and missions
-- [ ] Level editor for custom maps
+- [ ] Additional themes
+- [ ] Leaderboard with names
+- [ ] Achievement system
 
 ---
 
-## 📝 Version History
-
-### v2.0 (2026-02-19) - Modern Edition
-
-- Complete rewrite using Pygame with modular architecture
-- Added AI Opponent mode with BFS pathfinding algorithm
-- Implemented power-ups system (Speed Boost, Invincibility, Score Multiplier)
-- Multiple difficulty levels (Easy, Medium, Hard) with dynamic speed scaling
-- **Theme system** with four colour palettes (Cyberpunk, Retro, Ocean, Forest)
-- **In-game theme switcher** (Press T in menu)
-- Modern menu system with GUI and state management
-- Settings menu for customisation options
-- High score persistence to JSON file with separate tracking for each game mode
-- Visual polish: animated snake eyes, gradient effects, real-time HUD
-- Comprehensive documentation (README, ARCHITECTURE, QUICKSTART)
-- Professional modular code structure (7 separate modules, ~2000 lines)
-
-### v1.1 (2025)
-
-- Fixed issues and performance improvements
-- Added ability to read from file
-- First stable release of terminal version
-
-### v1.0 (2020-06-10)
-
-- First attempt at Snake game
-- Basic terminal implementation using curses
-
-### v0.4.1.3 (2020-06-10)
-
-- Original curses-based terminal version
-- Arrow key controls
-- Basic collision detection
-- Food spawn system
-
----
-
-## 👨‍💻 Development
+## Development
 
 **Author**: Oluwakemi T Obadeyi (Tech Girl Diaries)  
 **Repository**: [github.com/techgirldiaries/PySnake](https://github.com/techgirldiaries/PySnake)
 
 ### Technology Stack
 
-- **Python 3.7+**: Core programming language
-- **Pygame 2.5.0+**: Graphics and game engine (v2.0 only)
-- **curses**: Terminal graphics library (v1.0/v1.1 - standard library)
-- **JSON**: High score persistence
-- **Collections**: Deque for efficient snake body management
+- Python 3.7+
+- Pygame 2.5.0+
+- JSON for high score persistence
 
 ### Contributing
 
-We welcome contributions! This is a learning project and pull requests are appreciated.
-
-**How to contribute**:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions welcome! Fork the repository and submit a pull request.
 
 **Contribution ideas**:
 
 - New themes and colour schemes
 - Additional power-up types
 - Performance optimisations
-- Bug fixes and issue resolution
+- Bug fixes
 - Documentation improvements
-- New game modes
 
 ---
 
-## 📄 Licence
+## Licence
 
-Licensed under the **PolyForm Noncommercial Licence** - Commercial use is prohibited.
+Licensed under the **PolyForm Noncommercial Licence** - Commercial use prohibited.
 
-Copyright © 2025 Oluwakemi Obadeyi
+Copyright 2025 Oluwakemi Obadeyi
 
-See [LICENSE.md](../LICENSE.md) in the root directory for full licence details.
-
----
-
-## 🙏 Acknowledgements
-
-- Built with ❤️ and Python
-- Inspired by the classic Snake game
-- Thanks to the Pygame community for excellent documentation
-- Sound effects from various Creative Commons sources (optional)
+See [LICENSE.md](../LICENSE.md) for full details.
 
 ---
 
-**Enjoy playing PySnake v2.0!** 🐍🎮
+## Version History
 
-Questions, feedback, or issues? Feel free to open an issue on [GitHub](https://github.com/techgirldiaries/PySnake).
+### v2.0 (2026-02-19) - Modern Edition
+
+- Complete Pygame rewrite with modular architecture
+- AI Opponent mode with BFS pathfinding
+- Power-ups system (Speed, Invincibility, Multiplier)
+- **Dynamic theme system** with 4 colour palettes
+- **In-game theme switcher** (Press T)
+- Multiple difficulty levels
+- High score persistence
+- Professional 60 FPS graphics
+
+### v1.1 (2025)
+
+- Terminal version improvements
+- File reading capability
+
+### v1.0 (2020)
+
+- Original terminal-based snake game
+
+---
+
+**Enjoy playing PySnake v2.0!**
+
+Questions or feedback? Open an issue on [GitHub](https://github.com/techgirldiaries/PySnake).

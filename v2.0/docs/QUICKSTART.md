@@ -15,7 +15,7 @@ pip install -r requirements.txt
 python snake_pygame.py
 ```
 
-### 3. Play!
+### 3. Play
 
 - Press `SPACE` to start
 - Choose mode: `1` (Single Player) or `2` (VS AI) ⭐
@@ -34,6 +34,7 @@ python snake_pygame.py
 | `P` / `ESC`                        | Pause             |
 | `S`                                | Settings          |
 | `Q`                                | Quit / Back       |
+| `T`                                | Change Themes     |
 
 ---
 
